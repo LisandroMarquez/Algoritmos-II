@@ -8,7 +8,7 @@ Repositorio de GitHub donde se encuentran todos los trabajos y clases de Algorit
 
 ### Carpetas
 
-- **Prácticos:** AquÍ­ estarÁn los practicos enumerados y resueltos respecivamente.
+- **Prácticos:** Aquí­ estarán los practicos enumerados y resueltos respecivamente.
 - **Otros Ejercicios:** [`Google Docs Teórico-Práctico`](null)
 - **Parciales Y Finales Viejos:** Repositorio de Github con *parciales* y *finales* de años anteriores: [`Repositorio`](https://github.com/ExamenesViejos-FAMAF-Computacion/ExamenesViejos_AlgoritmosYEstructurasDeDatos2_FAMAF)
 
