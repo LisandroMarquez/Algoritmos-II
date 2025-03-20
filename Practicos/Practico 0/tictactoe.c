@@ -4,7 +4,7 @@
 
 #include <assert.h> /* assert() */
 
-const int N = 4;
+#define N 4
 
 #define CELL_MAX (N * N - 1)
 

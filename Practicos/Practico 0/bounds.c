@@ -30,8 +30,6 @@ struct bound_data check_bound(int value, int arr[], int length) {
             more = false;
         } else if (arr[i] <= value) {
             less = false;
-        } else {
-            printf("Nigga that's not possible ????");
         }
     }
 
