@@ -1,3 +1,5 @@
 # ignore helps
 **/help practico 1/
 **/*.exe
+**/*.o
+**/*.h.gch
