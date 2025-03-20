@@ -4,7 +4,7 @@
 
 #include <assert.h> /* assert() */
 
-#define N 4
+#define N 3
 
 #define CELL_MAX (N * N - 1)
 
@@ -34,26 +34,28 @@ void print_board(char board[N][N])
 }
 
 int cell_value(char cell) {
+    int value;
+
     switch (cell) {
     case 'X':
-        return 1;
+        value = 1;
         break;
     case 'O':
-        return -1;
+        value = -1;
         break;
     default:
-        return 0;
+        value = 0;
         break;
     }
+    return value;
 }
 
 char get_winner(char board[N][N])
 {
     char winner = '-';
-    int row_count = 0, col_count = 0, diag1_count = 0, diag2_count = 0;
+    int row_count, col_count, diag1_count = 0, diag2_count = 0, i = 0;
 
-    for (int i = 0; i < N; i++) { //+ i es fila, j es columna
-
+    while (i < N || row_count == N || col_count == N || row_count == -N || col_count == -N) { //+ i es fila, j es columna
         row_count = 0;
         col_count = 0;
 
@@ -65,8 +67,10 @@ char get_winner(char board[N][N])
         diag2_count += cell_value(board[N-1-i][i]);
 
         //# Finish if tic tac toe
-        if (row_count == N || col_count == N) return 'X';
-        if (row_count == -N || col_count == -N) return 'O';
+        if (row_count == N || col_count == N) winner = 'X';
+        if (row_count == -N || col_count == -N) winner = 'O';
+
+        i++;
     }
     if (diag1_count == N || diag2_count == N) winner = 'X';
     if (diag1_count == -N || diag2_count == -N) winner = 'O';
@@ -76,14 +80,15 @@ char get_winner(char board[N][N])
 
 bool has_free_cell(char board[N][N])
 {
-    for (int i = 0; i < N; i++) { //+ i es fila, j es columna
+    bool flag = false;
+    for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             if (board[i][j] == '-') {
-                return true;
+                flag = true;
             }
         }
     }
-    return false;
+    return flag;
 }
 
 int main(void)
