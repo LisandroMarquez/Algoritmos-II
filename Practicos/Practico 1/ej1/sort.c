@@ -8,16 +8,9 @@
 
 
 static void insert(int a[], unsigned int i, unsigned int length) {
-    while (i > 0) {
-        if (goes_before(a[i], a[i-1])) {
-            array_dump(a, length);
-            swap(a, i, i-1);
-        }
-
-        if (!array_is_sorted(a, i - 1)) {
-            printf("Somethings wrong...\n");
-        }
-
+    while (i > 0 && goes_before(a[i], a[i-1])) {
+        array_dump(a, length);
+        swap(a, i, i-1);
         i--;
     }
 }
