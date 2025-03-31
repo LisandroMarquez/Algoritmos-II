@@ -1,7 +1,7 @@
 # ignore helps
 **/help practico 1/
-**/*.exe
 **/*.o
+**/*.in
 **/*.h.gch
 **/sorter
-**/*.in
+**/word_sorter
