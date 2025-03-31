@@ -24,7 +24,7 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
         }
 
         // Retroceder j mientras a[j] >= pivot
-        if (!goes_before(pivot, a[j])) {
+        if (goes_before(pivot, a[j])) {
             j--;
             should_continue = true;
         }
