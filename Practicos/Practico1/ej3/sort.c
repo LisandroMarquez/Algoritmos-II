@@ -30,7 +30,7 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
         }
 
         // Intercambiar si i <= j y los elementos están en el lado incorrecto
-        if (goes_before(i, j) && !goes_before(a[i], pivot) && goes_before(a[j], pivot)) {
+        if (goes_before(i, j) && !goes_before(a[i], pivot) && !goes_before(pivot, a[j])) {
             swap(a, i, j);
             i++;
             j--;
