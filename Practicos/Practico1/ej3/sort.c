@@ -14,23 +14,23 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
     unsigned int j = der;
     bool should_continue = true;
 
-    while (should_continue && i <= j) {
+    while (should_continue && goes_before(i, j)) {
         should_continue = false;
 
         // Avanzar i mientras a[i] <= pivot
-        if (a[i] <= pivot) {
+        if (goes_before(a[i], pivot)) {
             i++;
             should_continue = true;
         }
 
         // Retroceder j mientras a[j] >= pivot
-        if (a[j] >= pivot) {
+        if (!goes_before(pivot, a[j])) {
             j--;
             should_continue = true;
         }
 
         // Intercambiar si i <= j y los elementos están en el lado incorrecto
-        if (i <= j && a[i] > pivot && a[j] < pivot) {
+        if (goes_before(i, j) && !goes_before(a[i], pivot) && goes_before(a[j], pivot)) {
             swap(a, i, j);
             i++;
             j--;
