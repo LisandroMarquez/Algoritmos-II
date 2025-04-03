@@ -67,8 +67,8 @@ int main(int argc, char *argv[]) {
     selection_sort(copy, length);
 
     /* show statistics for selection_sort */
-    printf("\nStatistics for selection_sort\n");
-    printf("Time elapsed = %gs\nComparisons: %u\nSwaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
+    printf("\nStatistics for selection_sort:\n");
+    printf("   - Time elapsed = %gs\n   - Comparisons: %u\n   - Swaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
 
 
     /* all the same for insertion_sort */
@@ -85,8 +85,8 @@ int main(int argc, char *argv[]) {
     insertion_sort(copy2, length);
 
     /* show statistics for insertion_sort */
-    printf("\nStatistics for insertion_sort\n");
-    printf("Time elapsed = %gs\nComparisons: %u\nSwaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
+    printf("\nStatistics for insertion_sort:\n");
+    printf("   - Time elapsed = %gs\n   - Comparisons: %u\n   - Swaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
 
     /* all the same for quick_sort */
     /* create a copy of the array */
@@ -102,8 +102,8 @@ int main(int argc, char *argv[]) {
     quick_sort(copy3, length);
 
     /* show statistics for selection_sort */
-    printf("\nStatistics for quick_sort\n");
-    printf("Time elapsed = %gs\nComparisons: %u\nSwaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
+    printf("\nStatistics for quick_sort:\n");
+    printf("   - Time elapsed = %gs\n   - Comparisons: %u\n   - Swaps: %u\n\n", (calculate_elapsed_time()/1000), comparisons_number(), swaps_number());
 
     return EXIT_SUCCESS;
 }
