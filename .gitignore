@@ -1,5 +1,5 @@
 # ignore helps
-**/help practico 1/
+**/lab**
 **/*.o
 **/*.in
 **/*.h.gch
