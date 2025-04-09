@@ -35,7 +35,7 @@ void selection_sort(int a[], unsigned int length, int k) {
     int i = 0;
     while (i < k + 1) {
         unsigned int min_pos = min_pos_from(a, i, length);
-        printf("Intercambio de %i <-> %i\n", a[i], a[min_pos]);
+        //!printf("Intercambio de %i <-> %i\n", a[i], a[min_pos]);
         swap(a, i, min_pos);
         i++;
     }
@@ -53,11 +53,11 @@ void selection_sort(int a[], unsigned int length, int k) {
  * @param k Posicion dentro del arreglo si estuviera ordenado.
  */
 int k_esimo(int a[], int length, int k) {
-    array_dump(a, length);
-    printf("El elemento desordenado en la posicion k = %i, es %i\n",k, a[k]);
+    //!array_dump(a, length);
+    //!printf("El elemento desordenado en la posicion k = %i, es %i\n",k, a[k]);
     selection_sort(a, length, k);
-    array_dump(a, length);
-    printf("\nEl elemento ordenado en la posicion k = %i, es %i\n",k, a[k]);
+    //!array_dump(a, length);
+    //!printf("\nEl elemento ordenado en la posicion k = %i, es %i\n",k, a[k]);
     return a[k];
 }
 
