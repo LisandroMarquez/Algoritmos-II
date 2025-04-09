@@ -48,17 +48,25 @@ bool tiene_cima(int a[], int length) {
  * @param length Largo del arreglo.
  */
 int cima(int a[], int length) {
-    int left = 0, right = length - 1;
+    int num;
     
-    while (left < right) {
-        int mid = left + (right - left) / 2;
-        
-        if (a[mid] < a[mid + 1]) {
-            left = mid + 1;
-        } else {
-            right = mid;
+    if (length == 1 || length == 2) num = 0;
+    else if (length > 2) {
+        for (int i = 1; i < length - 1; i++) {
+            if (a[i-1] < a[i] && a[i] > a[i+1]) {
+                // Verificar parte creciente
+                bool valido = true;
+                for (int j = 1; j < i && valido; j++) {
+                    if (a[j-1] >= a[j]) valido = false;
+                }
+                // Verificar parte decreciente
+                for (int j = i + 1; j < length && valido; j++) {
+                    if (a[j-1] <= a[j]) valido = false;
+                }
+                if (valido) num = i;
+            }
         }
     }
-    
-    return a[left];
+
+    return a[num];
 }
