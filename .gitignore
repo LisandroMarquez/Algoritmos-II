@@ -1,7 +1,6 @@
 # ignore helps
 **/lab**
 **/*.o
-**/*.in
 **/*.h.gch
 **/sorter
 **/word_sorter
