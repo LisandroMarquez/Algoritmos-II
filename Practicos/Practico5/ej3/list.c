@@ -10,7 +10,7 @@ list empty(void) {
     return l;
 }
 
-list addl(list_elem e, list l) {
+list addl(elem e, list l) {
     Node *p;
     p = malloc(sizeof(Node));
 
@@ -22,20 +22,20 @@ list addl(list_elem e, list l) {
 
 /* DESTRUCTOR */
 void list_destroy(list l) {
-    while (!list_is_empty(l)) {
+    while (!is_empty(l)) {
         l = tail(l);
     };
 }
 
 
 /* OPERATIONS */
-bool list_is_empty(list l) {
+bool is_empty(list l) {
     return (l == NULL);
 }
 
-list_elem head(list l) {
+elem head(list l) {
     //! Precondition
-    assert(!list_is_empty(l));
+    assert(!is_empty(l));
 
     //# Actual function
     return l->elem;
@@ -43,7 +43,7 @@ list_elem head(list l) {
 
 list tail(list l) {
     //! Precondition
-    assert(!list_is_empty(l));
+    assert(!is_empty(l));
 
     //# Actual function
     Node *p = l;
@@ -54,21 +54,21 @@ list tail(list l) {
     return l;
 }
 
-int list_length(list l) {
+int length(list l) {
     Node *p = l;
     int n = 0;
 
-    while (p->next != NULL) {
+    while (p != NULL) {
         n++;
         p = p->next;
     };
 
-    return n + 1;
+    return n;
 }
 
-list_elem index(list l, int n) {
+elem index(list l, int n) {
     //! Precondition
-    assert(list_length(l) > n);
+    assert(length(l) > n);
 
     //# Actual function
     Node *p = l;
@@ -82,7 +82,7 @@ list_elem index(list l, int n) {
     return p->elem;
 }
 
-list addr(list l, list_elem e) {
+list addr(list l, elem e) {
     Node *p, *q;
 
     q = malloc(sizeof(Node));
@@ -90,7 +90,7 @@ list addr(list l, list_elem e) {
     q->elem = e;
     q->next = NULL;
 
-    if (list_is_empty(l)) l = q;
+    if (is_empty(l)) l = q;
     else {
         p = l;
 
@@ -109,7 +109,7 @@ list copy_list(list l) {
     list l1 = empty();
 
     while (p != NULL) {
-        addr(l1, p->elem);
+        l = addr(l1, p->elem);
         p = p->next;
     };
 
@@ -120,7 +120,7 @@ list concat(list l0, list l1) {
     Node *p = l1;
     
     while (p != NULL) {
-        addr(l0, p->elem);
+        l0 = addr(l0, p->elem);
         p = p->next;
     };
 
@@ -130,8 +130,8 @@ list concat(list l0, list l1) {
 list drop(list l, int n) {
     int i = 0;
 
-    while (i < n && !list_is_empty(l)) {
-        tail(l);
+    while (i < n && !is_empty(l)) {
+        l = tail(l);
         i++;
     };
 
@@ -139,21 +139,28 @@ list drop(list l, int n) {
 }
 
 list take(list l, int n) {
-    Node *p = l, *q;
-    int i = 0;
+    Node *p = l, *q, *r;
+    int i = 1;
 
-    while (i < n && !list_is_empty(l)) {
-        p = p->next;
-        i++;
-    };
+    if (n <= 0 || l == NULL) {
+        list_destroy(l);
+        l = empty();
+    }
+    else {
+        while (i < n && p->next != NULL) {
+            p = p->next;
+            i++;
+        };
 
-    while (p->next != NULL) {
-        q = p;
-        p = p->next;
-        free(q);
-    };
+        q = p->next;
+        p->next = NULL;
 
-    free(p);
+        while (q != NULL) {
+            r = q;
+            q = q->next;
+            free(r);
+        };
+    }
 
     return l;
 }
