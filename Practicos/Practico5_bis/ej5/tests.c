@@ -143,9 +143,9 @@ void test_length() {
 }
 
 int main() {
-    //test_head();
+    test_head();
     test_index();
-    //test_length();
+    test_length();
 
     return 0;
 }
