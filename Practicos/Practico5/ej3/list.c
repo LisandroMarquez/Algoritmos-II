@@ -82,7 +82,7 @@ list_elem index(list l, int n) {
     return p->elem;
 }
 
-void addr(list l, list_elem e) {
+list addr(list l, list_elem e) {
     Node *p, *q;
 
     q = malloc(sizeof(Node));
@@ -100,6 +100,8 @@ void addr(list l, list_elem e) {
 
         p->next = q;
     };
+
+    return l;
 }
 
 list copy_list(list l) {
@@ -114,25 +116,29 @@ list copy_list(list l) {
     return l1;
 }
 
-void concat(list l0, list l1) {
+list concat(list l0, list l1) {
     Node *p = l1;
     
     while (p != NULL) {
         addr(l0, p->elem);
         p = p->next;
     };
+
+    return l0;
 }
 
-void drop(list l, int n) {
+list drop(list l, int n) {
     int i = 0;
 
     while (i < n && !list_is_empty(l)) {
         tail(l);
         i++;
     };
+
+    return l;
 }
 
-void take(list l, int n) {
+list take(list l, int n) {
     Node *p = l, *q;
     int i = 0;
 
@@ -148,4 +154,6 @@ void take(list l, int n) {
     };
 
     free(p);
+
+    return l;
 }

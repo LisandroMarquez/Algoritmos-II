@@ -66,7 +66,7 @@ list_elem index(list l, int n);
     PRE: length(l) > n
 */
 
-void addr(list l, list_elem e);
+list addr(list l, list_elem e);
 /*
     Adds an element e at the end the List l
 */
@@ -76,17 +76,17 @@ list copy_list(list l);
     Copy the list l into a new list l0
 */
 
-void concat(list l0, list l1);
+list concat(list l0, list l1);
 /*
     Adds all elements in list l1 to the end of list l0
 */
 
-void drop(list l, int n);
+list drop(list l, int n);
 /*
     Drops first n elements
 */
 
-void take(list l, int n);
+list take(list l, int n);
 /*
     Drops all elements in position < n
 */
