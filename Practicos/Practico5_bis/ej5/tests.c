@@ -91,8 +91,6 @@ void test_index() {
         // TEST! llamamos la función a testear
         result = index(input, tests[i].index);
 
-        printf("result: %d\n", result);
-
         // comparamos resultado obtenido con resultado esperado
         if (result == tests[i].result) {
             printf("OK\n");
